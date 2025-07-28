@@ -5,7 +5,7 @@ import { PromptTemplate } from "@langchain/core/prompts";
 
 const model = new ChatGoogleGenerativeAI({
   apiKey: process.env.GEMINI_API_KEY,
-  modelName: "gemini-pro",
+  modelName: "gemini-1.5-flash",
   temperature: 0.7,
 });
 
