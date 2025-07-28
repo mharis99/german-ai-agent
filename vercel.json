@@ -1,12 +1,8 @@
 {
-  "buildCommand": "npm install --legacy-peer-deps && npm run build",
   "builds": [
     {
       "src": "package.json",
-      "use": "@vercel/remix@2.15.3"
+      "use": "@vercel/remix"
     }
-  ],
-  "env": {
-    "NODE_VERSION": "18"
-  }
+  ]
 }
