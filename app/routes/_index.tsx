@@ -100,7 +100,7 @@ export default function Index() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 px-4 py-6 sm:px-6 sm:py-10">
       <div className="max-w-md mx-auto">
         <h1 className="text-xl sm:text-3xl font-bold text-center mb-5 text-gray-800">
-          Deutscher KI Partner
+          Deutsch Partner
         </h1>
 
         {/* Conversation Box */}
@@ -123,7 +123,7 @@ export default function Index() {
               }`}
             >
               <div className="flex items-center justify-between mb-1 text-gray-600 text-xs font-medium">
-                <span>{message.isUser ? 'Du' : 'KI Partner'}</span>
+                <span>{message.isUser ? 'Du' : 'Partner'}</span>
               </div>
               <div className="text-gray-800">{message.text}</div>
             </div>
