@@ -261,32 +261,6 @@ return (
             : "Tap the microphone to speak"}
         </p>
       </div>
-
-      {/* Tips Section */}
-      <div className="mt-6 bg-white rounded-lg shadow p-4 text-sm">
-        <h3 className="font-semibold text-gray-700 mb-2">
-          {currentLanguage === 'de-DE' ? 'Tipps für bessere Gespräche:' : 'Tips for better conversations:'}
-        </h3>
-        <ul className="list-disc list-inside space-y-1 text-gray-600">
-          {currentLanguage === 'de-DE' ? (
-            <>
-              <li>Sprechen Sie deutlich und in normalem Tempo</li>
-              <li>Stellen Sie Fragen, um das Gespräch am Laufen zu halten</li>
-              <li>Keine Angst vor Fehlern – sie gehören zum Lernen!</li>
-              <li>Verwenden Sie alltägliche Themen wie Wetter, Hobbys, Pläne</li>
-              <li>Die KI erkennt automatisch die Sprache und antwortet entsprechend</li>
-            </>
-          ) : (
-            <>
-              <li>Speak clearly and at a normal pace</li>
-              <li>Ask questions to keep the conversation going</li>
-              <li>Don’t worry about mistakes – they’re part of learning!</li>
-              <li>Use everyday topics like weather, hobbies, or plans</li>
-              <li>The AI automatically detects language and responds accordingly</li>
-            </>
-          )}
-        </ul>
-      </div>
     </div>
   </div>
 );
