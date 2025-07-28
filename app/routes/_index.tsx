@@ -11,10 +11,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   }
 
   try {
-    // Import the conversation function
     const { getLanguageResponse } = await import("~/lib/langchain-gemini");
-    
-    // Get AI response with language detection
     const aiResponse = await getLanguageResponse(transcript);
     
     return json({ 
@@ -22,24 +19,17 @@ export const action = async ({ request }: ActionFunctionArgs) => {
       language: aiResponse.language,
       detectedLanguage: aiResponse.detectedLanguage
     });
-    
   } catch (error) {
     console.error("Error processing transcript:", error);
     return json({ error: "Processing failed" }, { status: 500 });
   }
 };
 
-async function generateSpeech(text: string) {
-  // This is handled by Web Speech API in the frontend
-  return { audioUrl: null };
-}
-
-
 export default function Index() {
   const [isRecording, setIsRecording] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
   const [conversation, setConversation] = useState<Array<{text: string, isUser: boolean, language?: string}>>([]);
-  const [currentLanguage] = useState<string>('de-DE'); // fixed to German
+  const [currentLanguage] = useState<string>('de-DE');
 
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const audioChunksRef = useRef<Blob[]>([]);
@@ -71,7 +61,7 @@ export default function Index() {
       const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
       const recognition = new SpeechRecognition();
 
-      recognition.lang = 'de-DE'; // fixed to German
+      recognition.lang = 'de-DE';
       recognition.continuous = false;
       recognition.interimResults = false;
       recognition.maxAlternatives = 1;
@@ -107,32 +97,33 @@ export default function Index() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4 sm:p-6">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 px-4 py-6 sm:px-6 sm:py-10">
       <div className="max-w-md mx-auto">
-        <h1 className="text-2xl sm:text-3xl font-bold text-center mb-4 text-gray-800">
-          Deutscher KI Partner 🇩🇪
+        <h1 className="text-xl sm:text-3xl font-bold text-center mb-5 text-gray-800">
+          Deutscher KI Partner
         </h1>
 
         {/* Conversation Box */}
-        <div className="bg-white rounded-lg shadow p-4 mb-4 h-[60vh] overflow-y-auto space-y-3">
+        <div className="bg-white rounded-xl shadow p-4 mb-6 h-[65vh] overflow-y-auto space-y-3">
           <h2 className="text-md font-semibold text-gray-700 mb-2">Gespräch</h2>
 
           {conversation.length === 0 && (
             <p className="text-gray-500 italic text-center text-sm">
-              Klicken Sie auf das Mikrofon, um ein Gespräch zu beginnen...
+              Klicken Sie auf das Mikrofon, um zu starten...
             </p>
           )}
 
           {conversation.map((message, index) => (
             <div
               key={index}
-              className={`p-3 rounded-lg text-sm ${
-                message.isUser ? 'bg-blue-100 ml-10 text-right' : 'bg-gray-100 mr-10 text-left'
+              className={`p-3 rounded-lg text-sm leading-relaxed ${
+                message.isUser
+                  ? 'bg-blue-100 ml-10 text-right'
+                  : 'bg-gray-100 mr-10 text-left'
               }`}
             >
-              <div className="flex items-center justify-between mb-1 text-gray-600">
-                <span className="font-medium">{message.isUser ? 'Du' : 'KI Partner'}</span>
-                <span className="text-xs">🇩🇪</span>
+              <div className="flex items-center justify-between mb-1 text-gray-600 text-xs font-medium">
+                <span>{message.isUser ? 'Du' : 'KI Partner'}</span>
               </div>
               <div className="text-gray-800">{message.text}</div>
             </div>
@@ -170,7 +161,7 @@ export default function Index() {
             )}
           </button>
 
-          <p className="mt-3 text-sm text-gray-600">
+          <p className="mt-4 text-sm text-gray-600">
             {isRecording
               ? "Sprechen Sie jetzt..."
               : isProcessing
