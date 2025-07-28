@@ -10,9 +10,9 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@remix-run/node": "^2.15.3",
-    "@remix-run/react": "^2.15.3",
-    "@remix-run/serve": "^2.15.3",
+    "@remix-run/node": "2.15.3",
+    "@remix-run/react": "2.15.3",
+    "@remix-run/serve": "2.15.3",
     "@langchain/google-genai": "^0.0.15",
     "@langchain/core": "^0.1.0",
     "langchain": "^0.1.0",
@@ -21,7 +21,7 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@remix-run/dev": "^2.15.3",
+    "@remix-run/dev": "2.15.3",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
     "typescript": "^5.1.6"
